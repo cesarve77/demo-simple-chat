@@ -1,9 +1,9 @@
 # A Demo for Meteor package cesarve:simple-chat
 
-## Source
+## Package source
 [https://github.com/cesarve77/simple-chat]
 
 ## Working Demo
  
-[http://simpleschat.meteor.com  ] 
+[http://simpleschat.meteor.com] 
 
