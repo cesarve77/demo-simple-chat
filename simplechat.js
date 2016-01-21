@@ -3,10 +3,23 @@ if (Meteor.isClient) {
 
     Template.home.events({
         'click button': function (e) {
+
             e.preventDefault()
-            var roomId=$(e.target).val()
-            var username=$("#username").val()
-            console.log(username,roomId)
+            var roomId = $(e.target).val()
+            var username = $("#username").val()
+            if (!username) {
+                if ($('.form-group').hasClass('has-error'))
+                    return
+                $('.form-group').addClass('has-error').append('<span class="help-block">Is required</span>')
+                $('input').keyup(function () {
+                    if ($(this).val() != '') {
+                        $('.form-group').removeClass('has-error')
+                        $('span').remove()
+                    }
+                })
+                return
+            }
+            console.log(username, roomId)
             Router.go('room', {roomId: roomId}, {query: 'username=' + username})
         }
     });
