@@ -1,0 +1,49 @@
+<head>
+    <title>simplechat</title>
+</head>
+
+<body>
+
+</body>
+
+<template name="home">
+
+
+    <div class="container">
+        <h1>Demo Simple chat for Meteor </h1>
+        <div class="row">
+            <div class=" col-md-8 col-md-offset-2">
+                <div class="jumbotron">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <label for="exampleInputName2">username</label>
+                            <input type="text" name="username" class="form-control" id="username"
+                                   placeholder="Jane Doe">
+                        </div>
+
+                        <button type="submit" name="roomId" class="btn btn-default" value="general">General Room
+                        </button>
+                        <button type="submit" name="roomId" class="btn btn-default" value="{{random}}">Random Room
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+<template name="room">
+    <div class="container">
+        <h1>Demo Simple chat for Meteor </h1>
+        <div class="row">
+            <div class=" col-md-8 col-md-offset-2" style="height: 400px;">
+                {{>SimpleChatWindow roomId=roomId username=username title="Demo" beep=true limit=10}}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class=" col-md-6 col-md-offset-3">
+                <h3>Share this link for chat: {{urlFor 'room' roomId=roomId }}</h3>
+            </div>
+        </div>
+    </div>
+</template>
