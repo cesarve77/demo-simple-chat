@@ -27,7 +27,22 @@ if (Meteor.isClient) {
         'random': function () {
             return Random.id(5)
         }
+
     });
+
+    Template.room.onRendered(function () {
+        console.log('onCreated', this)
+        var self=this
+        this.avatarReady = new ReactiveVar(false)
+        HTTP.get('http://uifaces.com/api/v1/random', function (err, res) {
+            console.log(res)
+            if (err){
+                Session.set('avatar',null)
+            }
+            Session.set('avatar', res.data.image_urls.normal)
+        })
+    })
+
     Template.room.helpers({
         'roomId': function () {
             return Router.current().params.roomId
@@ -35,7 +50,12 @@ if (Meteor.isClient) {
         'username': function () {
             console.log('Router.current()', Router.current())
             return Router.current().params.query.username
+        },
+        avatar: function () {
+
+            return  Session.get('avatar')
         }
+
     });
 
 

@@ -23,7 +23,7 @@
                 <div class="jumbotron">
                     <form class="form-inline">
                         <div class="form-group" style="vertical-align: top">
-                            <label class="control-label"  for="exampleInputName2">Username: </label>
+                            <label class="control-label" for="exampleInputName2">Username: </label>
                             <input type="text" name="username" class="form-control" id="username"
                                    placeholder="Jane Doe" required="required">
                         </div>
@@ -43,7 +43,26 @@
 
         <div class="row">
             <div class=" col-md-8 col-md-offset-2" style="height: 400px;">
-                {{>SimpleChatWindow roomId=roomId username=username title="Demo" beep=true limit=10}}
+                {{#if avatar }}
+                    <div class="box box-info direct-chat direct-chat-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Room: {{roomId}}</h3>
+
+                            <div class="box-tools pull-right">
+                                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                                <!-- In box-tools add this button if you intend to use the contacts pane -->
+                                <button class="btn btn-box-tool" data-toggle="tooltip" title="Contacts"
+                                        data-widget="chat-pane-toggle"><i class="fa fa-comments"></i></button>
+                                <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        {{>SimpleChatWindow roomId=roomId username=username beep=true limit=5 avatar=avatar}}
+                    </div>
+                {{/if}}
+
             </div>
         </div>
 
