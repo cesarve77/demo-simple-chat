@@ -21,3 +21,5 @@ iron:router
 random
 cesarve:simple-chat
 twbs:bootstrap
+http
+reactive-var
