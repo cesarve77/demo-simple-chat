@@ -32,15 +32,21 @@ if (Meteor.isClient) {
 
     Template.room.onRendered(function () {
         console.log('onCreated', this)
-        var self=this
+        var self = this
         this.avatarReady = new ReactiveVar(false)
-        HTTP.get('http://uifaces.com/api/v1/random', function (err, res) {
-            console.log(res)
-            if (err){
-                Session.set('avatar',null)
-            }
-            Session.set('avatar', res.data.image_urls.normal)
-        })
+        try {
+            HTTP.get('http://uifaces.com/api/v1/random', function (err, res) {
+                console.log(res)
+                if (err) {
+                    Session.set('avatar', null)
+                }
+                Session.set('avatar', res.data.image_urls.normal)
+            })
+        } catch (e) {
+            Session.set('avatar', "/" + Math.random() * (5 - 1) + 1)
+
+        }
+
     })
 
     Template.room.helpers({
@@ -53,7 +59,7 @@ if (Meteor.isClient) {
         },
         avatar: function () {
 
-            return  Session.get('avatar')
+            return Session.get('avatar')
         }
 
     });
