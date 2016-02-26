@@ -10,7 +10,7 @@ boilerplate-generator@1.0.4
 caching-compiler@1.0.0
 caching-html-compiler@1.0.2
 callback-hook@1.0.4
-cesarve:simple-chat@0.1.5
+cesarve:simple-chat@0.2.0
 check@1.1.0
 ddp@1.2.2
 ddp-client@1.2.1
@@ -40,7 +40,6 @@ iron:router@1.0.12
 iron:url@1.0.11
 jquery@1.11.4
 launch-screen@1.0.4
-less@2.5.1
 livedata@1.0.15
 logging@1.0.8
 meteor@1.1.10
