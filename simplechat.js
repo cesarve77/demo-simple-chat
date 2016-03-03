@@ -33,12 +33,12 @@ if (Meteor.isClient) {
     Template.room.onRendered(function () {
         var self = this
         this.avatarReady = new ReactiveVar(false)
-        HTTP.get('http://uifaces.com/api/v1/random', function (err, res) {
-            console.log('*********')
+        HTTP.get('https://randomuser.me/api/', function (err, res) {
+            console.log(err, res)
             if (err)
                 return Session.set('avatar', "/avatar" + (Math.floor(Math.random() * 5) + 1) + ".png")
 
-            Session.set('avatar', res.data.image_urls.normal)
+            Session.set('avatar', res.data.results[0].user.picture.thumbnail)
         })
 
 
