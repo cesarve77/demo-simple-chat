@@ -32,14 +32,17 @@ if (Meteor.isClient) {
 
     Template.room.onRendered(function () {
         var self = this
-        this.avatarReady = new ReactiveVar(false)
+
+        return Session.set('avatar', "/avatar" + (Math.floor(Math.random() * 5) + 1) + ".png")
+/*
         HTTP.get('https://randomuser.me/api/', function (err, res) {
             console.log(err, res)
             if (err)
                 return Session.set('avatar', "/avatar" + (Math.floor(Math.random() * 5) + 1) + ".png")
 
-            Session.set('avatar', res.data.results[0].user.picture.thumbnail)
+            Session.set('avatar', res.data.results[0].picture.thumbnail)
         })
+*/
 
 
     })
@@ -53,7 +56,6 @@ if (Meteor.isClient) {
             return Router.current().params.query.username
         },
         avatar: function () {
-
             return Session.get('avatar')
         }
 
