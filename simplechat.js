@@ -1,3 +1,11 @@
+
+import {SimpleChat} from 'meteor/cesarve:simple-chat/config'
+SimpleChat.configure({
+    beep: false,
+    showViewed: true,
+    showReceived: true,
+    showJoined: true,
+})
 if (Meteor.isClient) {
 
 

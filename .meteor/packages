@@ -27,3 +27,4 @@ shell-server
 kadira:blaze-layout
 kadira:flow-router
 arillo:flow-router-helpers
+audit-argument-checks
