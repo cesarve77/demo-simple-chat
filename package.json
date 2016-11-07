@@ -1,0 +1,7 @@
+{
+  "name": "simple-chat",
+  "version": "0.4.0",
+  "engines": {
+    "npm": "4.4.7"
+  }
+}

@@ -52,7 +52,7 @@ if (Meteor.isClient) {
             return FlowRouter.getParam('roomId')
         },
         'username': function () {
-            return FlowRouter.getParam('username')
+            return FlowRouter.getQueryParam('username')
         },
         avatar: function () {
             return Session.get('avatar')
