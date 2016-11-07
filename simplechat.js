@@ -20,7 +20,7 @@ if (Meteor.isClient) {
                 return
             }
             console.log(username, roomId)
-            Router.go('room', {roomId: roomId}, {query: 'username=' + username})
+            FlowRouter.go('room', {roomId}, {username})
         }
     });
     Template.home.helpers({
@@ -49,11 +49,10 @@ if (Meteor.isClient) {
 
     Template.room.helpers({
         'roomId': function () {
-            return Router.current().params.roomId
+            return FlowRouter.getParam('roomId')
         },
         'username': function () {
-            console.log('Router.current()', Router.current())
-            return Router.current().params.query.username
+            return FlowRouter.getParam('username')
         },
         avatar: function () {
             return Session.get('avatar')
@@ -64,15 +63,15 @@ if (Meteor.isClient) {
 
 }
 
-Router.route("/", {
+FlowRouter.route("/", {
     name: "home",
     action: function () {
-        this.render('home')
+        BlazeLayout.render("home");
     }
 })
-Router.route("/:roomId", {
+FlowRouter.route("/:roomId", {
     name: "room",
     action: function () {
-        this.render('room')
+        BlazeLayout.render('room')
     }
 })
